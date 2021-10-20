@@ -1,11 +1,12 @@
 for(var i=0; i<document.querySelectorAll(".drum").length;i++){
 
-    document.querySelectorAll(".drum")[i].addEventListener("click",gotClicked);
+    document.querySelectorAll(".drum")[i].addEventListener("click", drumEventHandler);
+    document.querySelectorAll(".drum")[i].addEventListener("keydown", drumEventHandler);
 
 }
 
-function gotClicked(){
-  var buttonInnerHTML= this.innerHTML;
+function drumEventHandler(key = null){
+  var buttonInnerHTML = key.key || this.innerHTML;
   switch (buttonInnerHTML) {
     case "w":
         var crash= new Audio("sounds/crash.mp3");
