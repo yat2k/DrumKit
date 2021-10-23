@@ -1,13 +1,19 @@
 for(var i=0; i<document.querySelectorAll(".drum").length;i++){
 
-    document.querySelectorAll(".drum")[i].addEventListener("click", drumEventHandler);
-    document.querySelectorAll(".drum")[i].addEventListener("keydown", drumEventHandler);
+    document.querySelectorAll(".drum")[i].addEventListener("click", function(){
+        var buttonInnerHTML = this.innerHTML;
+        makeSound(buttonInnerHTML);
 
+});
 }
+document.addEventListener("keydown",function(event){
+    makeSound(event.key);
 
-function drumEventHandler(key = null){
-  var buttonInnerHTML = key.key || this.innerHTML;
-  switch (buttonInnerHTML) {
+});
+
+function makeSound(key){
+  
+  switch (key) {
     case "w":
         var crash= new Audio("sounds/crash.mp3");
         crash.play();
